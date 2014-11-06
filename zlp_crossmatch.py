@@ -80,7 +80,10 @@ def main(args):
             index = matched_obj_id.index(obj_id)
 
             for key in missing_keys:
-                new_cols[key].append(query_results[key][index])
+                value = query_results[key][index]
+                if value.dtype.kind == 'S':
+                    value = value.strip()
+                new_cols[key].append(value)
         else:
             for key in missing_keys:
                 new_cols[key].append(np.nan)
