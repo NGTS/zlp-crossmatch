@@ -20,3 +20,11 @@ python zlp_crossmatch.py input.fits -e ucac3 -o output.fits
 # It's possible to overwrite the input file
 python zlp_crossmatch.py input.fits -e ucac3 -o input.fits
 ----
+
+== Analysis of the output ==
+
+To analyse the match and see what the field contains, use the ipython notebook supplied:
+
+ ipython notebook --matplotlib inline
+
+visit the url: http://localhost:8888/notebooks/CatmatchAnalysis.ipynb and change the filename in the second code cell to match the new output file. This file must contain the ucac3 _and_ simbad outputs.
