@@ -1,6 +1,6 @@
 = ZLP crossmatch =
 
-Given a fits file containing a `catalogue` HDU, query external catalogues with `astroquery` to get catalogue magntiudes.
+Given a fits file containing a `catalogue` HDU, query external catalogues with `stilts` to get catalogue magntiudes.
 
 == Catalogues used ==
 
