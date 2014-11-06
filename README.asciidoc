@@ -1,0 +1,9 @@
+= ZLP crossmatch =
+
+Given a fits file containing a `catalogue` HDU, query external catalogues with `astroquery` to get catalogue magntiudes.
+
+== Catalogues used ==
+
+* UCAC3
+* 2MASS
+* SIMBAD
