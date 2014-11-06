@@ -5,5 +5,18 @@ Given a fits file containing a `catalogue` HDU, query external catalogues with `
 == Catalogues used ==
 
 * UCAC3
-* 2MASS
 * SIMBAD
+
+== Example usage ==
+
+[source,bash]
+----
+# Matching with simbad
+python zlp_crossmatch.py input.fits -e simbad -o output.fits
+
+# Matching with ucac3
+python zlp_crossmatch.py input.fits -e ucac3 -o output.fits
+
+# It's possible to overwrite the input file
+python zlp_crossmatch.py input.fits -e ucac3 -o input.fits
+----
