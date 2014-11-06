@@ -90,7 +90,13 @@ def main(args):
 
     new_cols = {key: np.array(new_cols[key]) for key in new_cols}
 
-    shutil.copyfile(args.filename, args.output)
+    try:
+        shutil.copyfile(args.filename, args.output)
+    except shutil.Error as err:
+        if 'same file' in str(err):
+            pass
+        else:
+            raise
 
     with fitsio.FITS(args.output, 'rw') as outfile:
         hdu = outfile['catalogue']
