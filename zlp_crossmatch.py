@@ -19,16 +19,17 @@ BASEDIR = os.path.dirname(__file__)
 memory = joblib.Memory(cachedir=tempfile.gettempdir())
 
 COLUMNS = {
-    'ucac3': [
+    'ucac3': sorted([
         'f.mag', 'a.mag', 'e_f.mag', 'e_a.mag',
         'pmRA', 'pmDE', 'e_pmRA', 'e_pmDE',
         'Jmag', 'Hmag', 'Kmag', 'Bmag', 'R2mag',
         'Imag', 'angDist',
-    ],
-    'simbad': [
+    ]),
+    'simbad': sorted([
         'otype', 'sp_type',
-    ],
+    ]),
 }
+
 
 class Stilts(object):
     stilts_script = os.path.join(BASEDIR, 'stilts')
@@ -100,10 +101,12 @@ def main(args):
 
     with fitsio.FITS(args.output, 'rw') as outfile:
         hdu = outfile['catalogue']
-        for colname in new_cols:
+        for colname in sorted(new_cols):
             print('Adding column {}'.format(colname))
             hdu.insert_column(colname, new_cols[colname])
 
+        hdu.write_history('Added columns {} from {}'.format(
+            ', '.join(new_cols), args.external_catalogue.capitalize()))
 
 
 if __name__ == '__main__':
